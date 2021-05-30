@@ -11,13 +11,13 @@ Dark green: #28b485
    box-sizing: border-box; 
 }
 
-body {
+body { /* These properties will be included in all the elements inside the body element */
     font-family: 'Lato', sans-serif;
     font-weight: 400;
     font-size: 16px;
-    line-height: 1.7;
+    line-height: 1.7; /* 1.7 times bigger than the actual line size */
     color: #777;
-    padding: 30px;
+    padding: 30px; /* padding property will not get inherited to child elements */
 }
 
 .header {
@@ -34,6 +34,7 @@ body {
     position: relative;
 
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    /* clip-path: polygon(50% 0, 100% 100%, 0 100%); /* triangle /* */
 }
 
 .logo-box {
@@ -43,21 +44,28 @@ body {
 }
 
 .logo {
-    height: 35px;
+    height: 35px; /* width will be automatically identified by the browser */
 }
+
+/* .logo:hover {
+    animation: moveInRight 1s ease-out;
+} */
 
 .text-box {
     position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%); 
+    top: 40%; /* 40% from the top parent element */
+    left: 50%; /* 50% from the left parent element */
+    transform: translate(-50%, -50%); /* move the text box -50 % from both top and left */
+    text-align: center;
 }
 
 .heading-primary {
-    color: #fff;
+    color: rgb(255, 255, 255);
     text-transform: uppercase;
 
-    backface-visibility: hidden;
+    backface-visibility: hidden; /* stops animation being shaky at the end */
+
+    margin-bottom: 60px;
 }
 
 .heading-primary-main {
@@ -66,14 +74,14 @@ body {
     font-weight: 400;
     letter-spacing: 35px;
 
-    animation-name: moveInLeft;
+    animation-name: moveFromLeftToRight;
     animation-duration: 1s;
-    animation-timing-function: ease-out;
+    animation-timing-function: ease-out; /* faster in the first place and slower at last */
 
-    /* 
-    animation-delay: 3s;
-    animation-iteration-count: 3;
-    */
+    
+    /* animation-delay: 3s; */
+    /* animation-iteration-count: 3; */
+   
 }
 
 .heading-primary-sub {
@@ -82,11 +90,11 @@ body {
     font-weight: 700;
     letter-spacing: 17.4px;
 
-    animation: moveInRight 1s ease-out;
+    animation: moveFromRightToLeft 1s ease-out;
 
 }
 
-@keyframes moveInLeft {
+@keyframes moveFromLeftToRight {
     0% {
         opacity: 0;
         transform: translateX(-100px);
@@ -102,7 +110,7 @@ body {
     }
 }
 
-@keyframes moveInRight {
+@keyframes moveFromRightToLeft {
     0% {
         opacity: 0;
         transform: translateX(100px);
@@ -116,4 +124,70 @@ body {
         opacity: 1;
         transform: translate(0);
     }
+}
+
+@keyframes moveFromBottomToTop {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+.btn:link, /* :link is a pseudo class */
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px; /* 15px -> top and bottom, 40px -> left and right */
+    display: inline-block;
+    border-radius: 100px;
+    transition: all .2s; /* all = all properties are enabled to be animated */
+    position: relative; /* added to maintain the position of ::after pseudo element */
+}
+
+.btn:hover {
+    transform: translateY(-3px); /* y axis moves top to bottom in css. Hence to move up, -3px have applied */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* box shadow 1- shadow for x direction, 2 - shadow for y direction
+                                                 3 - blur size, 4 - color */
+}
+
+.btn-white {
+    background-color: #fff;
+    color: #777;
+}
+
+.btn::after {
+    content: ''; /* necessary to add this property even it is empty */
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+.btn-white::after {
+    background-color: #fff;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6); /* increase or decrease the element */
+    opacity: 0;
+}
+
+.btn-animated {
+    animation: moveFromBottomToTop 1s ease-out .75s; /* .75 = animation delay */
+    animation-fill-mode: backwards; /* assigns the first steps of the animation before animation starts */
 }
