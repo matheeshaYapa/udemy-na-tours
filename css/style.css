@@ -5,19 +5,28 @@ Medium green: #55c57a
 Dark green: #28b485
 */
 
-* {
+*,
+*::after,
+*::before {
    margin: 0;
    padding: 0;
-   box-sizing: border-box; 
+   box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%; /* we won't set this in pixels because user can edit the font size from the browser
+                            So here, what we are doing is taking 62.5% of the browser font size */
 }
 
 body { /* These properties will be included in all the elements inside the body element */
     font-family: 'Lato', sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    /* font-size: 16px; */
     line-height: 1.7; /* 1.7 times bigger than the actual line size */
     color: #777;
-    padding: 30px; /* padding property will not get inherited to child elements */
+    padding: 3rem; /* padding property will not get inherited to child elements */
+    
+    box-sizing: border-box; 
 }
 
 .header {
@@ -37,21 +46,21 @@ body { /* These properties will be included in all the elements inside the body 
     /* clip-path: polygon(50% 0, 100% 100%, 0 100%); /* triangle /* */
 }
 
-.logo-box {
+.header__logo-box {
     position: absolute;
-    top: 40px;
-    left: 40px;
+    top: 4rem;
+    left: 4rem;
 }
 
-.logo {
-    height: 35px; /* width will be automatically identified by the browser */
+.header__logo {
+    height: 3.5rem; /* width will be automatically identified by the browser */
 }
 
 /* .logo:hover {
     animation: moveInRight 1s ease-out;
 } */
 
-.text-box {
+.header__text-box {
     position: absolute;
     top: 40%; /* 40% from the top parent element */
     left: 50%; /* 50% from the left parent element */
@@ -65,14 +74,14 @@ body { /* These properties will be included in all the elements inside the body 
 
     backface-visibility: hidden; /* stops animation being shaky at the end */
 
-    margin-bottom: 60px;
+    margin-bottom: 6rem;
 }
 
-.heading-primary-main {
+.heading-primary--main {
     display: block;
-    font-size: 60px;
+    font-size: 6rem;
     font-weight: 400;
-    letter-spacing: 35px;
+    letter-spacing: 3.5rem;
 
     animation-name: moveFromLeftToRight;
     animation-duration: 1s;
@@ -84,11 +93,11 @@ body { /* These properties will be included in all the elements inside the body 
    
 }
 
-.heading-primary-sub {
+.heading-primary--sub {
     display: block;
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: 700;
-    letter-spacing: 17.4px;
+    letter-spacing: 1.75rem;
 
     animation: moveFromRightToLeft 1s ease-out;
 
@@ -97,11 +106,11 @@ body { /* These properties will be included in all the elements inside the body 
 @keyframes moveFromLeftToRight {
     0% {
         opacity: 0;
-        transform: translateX(-100px);
+        transform: translateX(-10rem);
     }
 
     80% {
-        transform: translateX(10px);
+        transform: translateX(1rem);
     }
 
     100% {
@@ -113,11 +122,11 @@ body { /* These properties will be included in all the elements inside the body 
 @keyframes moveFromRightToLeft {
     0% {
         opacity: 0;
-        transform: translateX(100px);
+        transform: translateX(10rem);
     }
 
     80% {
-        transform: translateX(-10px);
+        transform: translateX(-1rem);
     }
 
     100% {
@@ -129,7 +138,7 @@ body { /* These properties will be included in all the elements inside the body 
 @keyframes moveFromBottomToTop {
     0% {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(3rem);
     }
 
     100% {
@@ -142,25 +151,26 @@ body { /* These properties will be included in all the elements inside the body 
 .btn:visited {
     text-transform: uppercase;
     text-decoration: none;
-    padding: 15px 40px; /* 15px -> top and bottom, 40px -> left and right */
+    padding: 1.5rem 4rem; /* 15px -> top and bottom, 40px -> left and right */
     display: inline-block;
-    border-radius: 100px;
+    border-radius: 10rem;
     transition: all .2s; /* all = all properties are enabled to be animated */
     position: relative; /* added to maintain the position of ::after pseudo element */
+    font-size: 1.6rem;
 }
 
 .btn:hover {
-    transform: translateY(-3px); /* y axis moves top to bottom in css. Hence to move up, -3px have applied */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-.3rem); /* y axis moves top to bottom in css. Hence to move up, -3px have applied */
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
 }
 
 .btn:active {
-    transform: translateY(-1px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* box shadow 1- shadow for x direction, 2 - shadow for y direction
+    transform: translateY(-.1rem);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.2); /* box shadow 1- shadow for x direction, 2 - shadow for y direction
                                                  3 - blur size, 4 - color */
 }
 
-.btn-white {
+.btn--white {
     background-color: #fff;
     color: #777;
 }
@@ -178,7 +188,7 @@ body { /* These properties will be included in all the elements inside the body 
     transition: all .4s;
 }
 
-.btn-white::after {
+.btn--white::after {
     background-color: #fff;
 }
 
@@ -187,7 +197,7 @@ body { /* These properties will be included in all the elements inside the body 
     opacity: 0;
 }
 
-.btn-animated {
+.btn--animated {
     animation: moveFromBottomToTop 1s ease-out .75s; /* .75 = animation delay */
     animation-fill-mode: backwards; /* assigns the first steps of the animation before animation starts */
 }
