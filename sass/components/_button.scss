@@ -1,0 +1,56 @@
+
+.btn {
+    &:link, &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem; /* 15px -> top and bottom, 40px -> left and right */
+        display: inline-block;
+        border-radius: 10rem;
+        transition: all .2s; /* all = all properties are enabled to be animated */
+        position: relative; /* added to maintain the position of ::after pseudo element */
+        font-size: 1.6rem;
+    }
+
+    &:hover {
+        transform: translateY(-.3rem); /* y axis moves top to bottom in css. Hence to move up, -3px have applied */
+        box-shadow: 0 1rem 2rem rgba($color-black, .2);
+
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6); /* increase or decrease the element */
+            opacity: 0;
+        }
+    }
+
+    &:active {
+        transform: translateY(-.1rem);
+        box-shadow: 0 .5rem 1rem rgba($color-black, .2); /* box shadow 1- shadow for x direction, 2 - shadow for y direction
+                                                     3 - blur size, 4 - color */
+    }
+    
+    &--white {
+        background-color: $color-white;
+        color: $color-grey-dark;
+
+        &::after {
+            background-color: $color-white;
+        }
+    }
+    
+    &::after {
+        content: ''; /* necessary to add this property even it is empty */
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 100px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all .4s;
+    }
+    
+    &--animated {
+        animation: moveFromBottomToTop 1s ease-out .75s; /* .75 = animation delay */
+        animation-fill-mode: backwards; /* assigns the first steps of the animation before animation starts */
+    }
+}

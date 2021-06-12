@@ -1,0 +1,17 @@
+*,
+*::after,
+*::before {
+   margin: 0;
+   padding: 0;
+   box-sizing: inherit;
+}
+
+html {
+    // this defines what 1rem is
+    font-size: 62.5%; /* we won't set this in pixels because user can edit the font size from the browser
+                            So here, what we are doing is taking 62.5% of the browser font size */
+}
+
+body { /* These properties will be included in all the elements inside the body element */
+    box-sizing: border-box; 
+}
