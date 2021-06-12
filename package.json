@@ -1,0 +1,25 @@
+{
+  "name": "udemy-na-tours",
+  "version": "1.0.0",
+  "description": "Landing page for tourists who love nature",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matheeshaYapa/udemy-na-tours.git"
+  },
+  "author": "matheeshaYapa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matheeshaYapa/udemy-na-tours/issues"
+  },
+  "homepage": "https://github.com/matheeshaYapa/udemy-na-tours#readme",
+  "devDependencies": {
+    "node-sass": "^6.0.0"
+  },
+  "dependencies": {
+    "jquery": "^3.6.0"
+  }
+}
