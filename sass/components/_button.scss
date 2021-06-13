@@ -35,6 +35,15 @@
             background-color: $color-white;
         }
     }
+
+    &--green {
+        background-color: $color-primary;
+        color: $color-white;
+
+        &::after {
+            background-color: $color-primary;
+        }
+    }
     
     &::after {
         content: ''; /* necessary to add this property even it is empty */
