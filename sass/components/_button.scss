@@ -1,6 +1,8 @@
 
 .btn {
-    &:link, &:visited {
+    &, // this adds because it works for <button> elements also
+    &:link,
+    &:visited {
         text-transform: uppercase;
         text-decoration: none;
         padding: 1.5rem 4rem; /* 15px -> top and bottom, 40px -> left and right */
@@ -9,6 +11,10 @@
         transition: all .2s; /* all = all properties are enabled to be animated */
         position: relative; /* added to maintain the position of ::after pseudo element */
         font-size: $default-font-size;
+
+        // change for the <button> element
+        border: none;
+        cursor: pointer;
     }
 
     &:hover {
@@ -21,7 +27,9 @@
         }
     }
 
-    &:active {
+    &:active,
+    &:focus {
+        outline: none;
         transform: translateY(-.1rem);
         box-shadow: 0 .5rem 1rem rgba($color-black, .2); /* box shadow 1- shadow for x direction, 2 - shadow for y direction
                                                      3 - blur size, 4 - color */
