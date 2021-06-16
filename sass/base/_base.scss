@@ -7,11 +7,30 @@
 }
 
 html {
-    // this defines what 1rem is
+    // this defines what 1rem is (1rem = 10px; 10px/16px = 62.5%)
     font-size: 62.5%; /* we won't set this in pixels because user can edit the font size from the browser
                             So here, what we are doing is taking 62.5% of the browser font size */
+
+    @include respond(tab-land) { // width < 900px
+        font-size: 56.25%; // 1rem = 9px; 9/16 = 56.25%
+    }
+    @include respond(tab-port) { // width < 600px
+        font-size: 50%; // 1rem = 8px; 8/16 = 50%
+    }
+        // this is not needed we want the same font size as for tab-port
+    // @include respond(phone) {
+    //     font-size: 50%;
+    // }
+    @include respond(big-desktop) {
+        font-size: 75%; // 1rem = 12px; 12/16 = 75%
+    }
 }
 
 body { /* These properties will be included in all the elements inside the body element */
-    box-sizing: border-box; 
+    box-sizing: border-box;
+    padding: 3rem; /* padding property will not get inherited to child elements */
+
+    @include respond(tab-port) {
+        padding: 0;
+    }
 }

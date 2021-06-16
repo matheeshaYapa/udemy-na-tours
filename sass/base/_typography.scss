@@ -4,7 +4,6 @@ body { /* These properties will be included in all the elements inside the body 
     /* font-size: 16px; */
     line-height: 1.7; /* 1.7 times bigger than the actual line size */
     color: $color-grey-dark;
-    padding: 3rem; /* padding property will not get inherited to child elements */
 }
 
 .heading-primary {
@@ -28,6 +27,11 @@ body { /* These properties will be included in all the elements inside the body 
         
         /* animation-delay: 3s; */
         /* animation-iteration-count: 3; */
+
+        @include respond(phone) {
+            letter-spacing: 1rem;
+            font-size: 5rem;
+        }
        
     }
     
@@ -38,6 +42,10 @@ body { /* These properties will be included in all the elements inside the body 
         letter-spacing: 1.75rem;
     
         animation: moveFromRightToLeft 1s ease-out;
+
+        @include respond(phone) {
+            letter-spacing: .5rem;
+        }
     
     }
 }
@@ -53,6 +61,14 @@ body { /* These properties will be included in all the elements inside the body 
     color: transparent;
     letter-spacing: 2px;
     transition: all .2s;
+
+    @include respond(tab-port) {
+        font-size: 3rem;
+    }
+
+    @include respond(phone) {
+        font-size: 2.5rem;
+    }
 
     &:hover {
         transform: skewY(2deg) skewX(15deg) scale(1.1);
