@@ -34,3 +34,8 @@ body { /* These properties will be included in all the elements inside the body 
         padding: 0;
     }
 }
+
+::selection {
+    background-color: $color-primary;
+    color: $color-white;
+}
